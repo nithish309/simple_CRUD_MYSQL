@@ -26,5 +26,11 @@ class UserModel{
         const [res]=await database.execute(delete_query,[id]);
         return res;
     }
+    static async existUser({email}){
+        const exist_query=`SELECT * FROM ${table} WHERE email=?`;
+        const [res]=await database.execute(exist_query,[email]);
+        return res[0];
+
+    }
 }
 export default UserModel;
